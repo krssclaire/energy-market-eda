@@ -6,10 +6,12 @@ This project is intended to:
 * Identify seasonal pattern and volatility
 * Analyze the relationship between demand and supply  
 
-*Technical tools*: This project will be developed entirely on Python programming language run on Jupyter Notebooks.
-## 2. Dataset Description
+*Technical tools*: This project will be developed entirely on Python programming language run on Jupyter Notebooks. 
+
+## 2. Dataset
+### Dataset Description
 Due to the aim of analyzing prices related to the demand and the supply of the energy stock, it has been decided to analyze a period of time that goes from 01-01-2021 to 31-12-2025, in order to analyze long-term volatility, patterns and find helpful insghts for trading decision making.  
-For this reason, despite energy prices are transmitted on quartely basis from 2025 ([ARERA Deliberation 304/2024/R/eel and TIDE – Testo Integrato del Dispacciamento Elettrico](https://confindustriatoscanacentroecosta.it/mercato-elettrico-il-prezzo-pun-diventa-quartorario-effetti-per-le-imprese/), this project takes into consideration prices of PUN (Prezzo Unico Nazionale) index GME on hourly basis in order to analyze standardized data over time, in spite of detailed quartely frequency insights.  
+For this reason, despite energy prices are transmitted on quartely basis from 2025 ([ARERA Deliberation 304/2024/R/eel and TIDE – Testo Integrato del Dispacciamento Elettrico](https://confindustriatoscanacentroecosta.it/mercato-elettrico-il-prezzo-pun-diventa-quartorario-effetti-per-le-imprese/)), this project takes into consideration prices of PUN (Prezzo Unico Nazionale) index GME on hourly basis in order to analyze standardized data over time, in spite of detailed quartely frequency insights.  
 
 The dataset is composed by downloaded data from two sources: 
 1. The first one is GME ([Gestore del Mercato Elettrico]((https://www.mercatoelettrico.org/it-it/Home/Esiti/Elettricita/MGP/Esiti/PUN))) which is the official Italian energy market data provider, and official trading market.  
@@ -36,3 +38,4 @@ The dataset(*) is divided in two macro-areas:
 > * For TERNA dataset the generation data is contained in <code>TERNA-gen-202n.xlsx</code> while the load data is in <code>TERNA-load-202n.xlsx </code>  
 > where n goes from 1 to 5 in order to represent the five-year-period
 
+## 3. Data cleaning
