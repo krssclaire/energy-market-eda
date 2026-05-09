@@ -1,41 +1,86 @@
 # Electricity Price Behavior in Italy: A Data Analysis for Trading Insights
 
-## 1. Overview and Project Aim
-This project is intended to:
-* Analyze energy prices dynamic in Italy
-* Identify seasonal pattern and volatility
-* Analyze the relationship between demand and supply  
+## Project Overview and Research Objective
+This project explores the behavior of the Italian electricity market between 2021 and 2025 through a data-driven analysis of energy prices, electricity demand, and generation dynamics.  
+The study combines market price data from GME with generation and load data provided by Italian TSO, TERNA in order to investigate:
+* price volatility
+* seasonal and intraday patterns
+* supply-demand interactions
+* renewable generation impact
+* market behavior during periods of energy stress
 
-*Technical tools*: This project will be developed entirely on Python programming language run on Jupyter Notebooks. 
+The project is entirely developed in Python using Jupyter Notebooks.
 
-## 2. Dataset
-### Dataset Description
-Due to the aim of analyzing prices related to the demand and the supply of the energy stock, it has been decided to analyze a period of time that goes from 01-01-2021 to 31-12-2025, in order to analyze long-term volatility, patterns and find helpful insghts for trading decision making.  
-For this reason, despite energy prices are transmitted on quartely basis from 2025 ([ARERA Deliberation 304/2024/R/eel and TIDE – Testo Integrato del Dispacciamento Elettrico](https://confindustriatoscanacentroecosta.it/mercato-elettrico-il-prezzo-pun-diventa-quartorario-effetti-per-le-imprese/)), this project takes into consideration prices of PUN (Prezzo Unico Nazionale) index GME on hourly basis in order to analyze standardized data over time, in spite of detailed quartely frequency insights.  
+## Repository Structure
+```text
+energy-market-eda/
+│
+├── README.md
+│
+├── notebook/
+│   ├── 01-0_data-collection.ipynb
+│   ├── 02-1_prices-data-cleaning.ipynb
+│   ├── 02-2_gen-data-cleaning.ipynb
+│   ├── 02-3_load-data-cleaning.ipynb
+│   ├── 03_dataset-merge.ipynb
+│   ├── 04_exploratory-data-analysis.ipynb
+│   └── ...
+│
+└── dataset/
+    ├── clean/
+    └── raw/
+```
 
-The dataset is composed by downloaded data from two sources: 
-1. The first one is GME ([Gestore del Mercato Elettrico]((https://www.mercatoelettrico.org/it-it/Home/Esiti/Elettricita/MGP/Esiti/PUN))) which is the official Italian energy market data provider, and official trading market.  
-The dataset contains 5 tables(*), each one in an .xlsx file. Each table contains data of 1 year from Jenuary 1st to December 31st and it's composed by the following columns:
-    * _Data_ - it's the date, formatted as dd/mm/yy in ascending order;
-    * _Ora_ - it's the hour of the day, data type is integer that goes from 1 to 24;
-    * _€/MWh_ - data type is float and it represent the price of the energy at that hour of the day by Mega Watt per hour. 
-2. The second one is [TERNA Downolad Data Center](https://dati.terna.it/en/download-center). TERNA (Trasmissione Elettrica Rete Nazionale) is an Italian corporate operating in energy transmission nets.  
-The dataset(*) is divided in two macro-areas:  
-    1. Generation - it represents the  quantity of energy generated and in this study it describes the supply (S) of the energy.  
-    The dataset is composed by 5 files (and tables), each one for each year and the columns contained are:
-        * _Date_ - date format is <code>dd/mm/yy hh:mm:ss</code> on quarter basis;
-        * _Actual Generation_ - datatype is float, the standard measure is not defined but it is assumed to be Mega Watt (MW);
-        * _Primary Source_ - it represents the source of energy production and the values are Thermal_, _Wind_, _Geothermal_, _Photovoltaic_, _Self-consuption_, _Hydro_.
-    2. Load - it represents the quantity of energy dispatched, for this study it's the demand (D) of the energy.
-    The dataset is composed by 5 files (and tables), one for each year. The columns are:
-        * _Date_ - date format is <code>dd/mm/yy hh:mm:ss</code> on quarter basis;
-        * _Total Load [MW]_ - float data type
-        * _Forecast Total Load [MW]_ - for this analysis will not be taken into consideration
-        * _Bidding Zone_ - it would be helpful for zonal analysis and internal energy market dynamic. The zones, classified by energy transmission net prerequisites and characetristics,  are _Calabria_, _Centre-North_, _Centre-South_, _North_, _Sardinia_, _Sicily_, _South_, _Italy_.   
+The project follows a modular analytical workflow including:
+1. Data collection
+2. Data cleaning and Temporal harmonization
+3. Dataset merging
+4. Exploratory data analysis (EDA)
+5. Statistical interpretation of market dynamics
 
-> (*) The name of each file (and so table) is formatted as follows:
-> * For GME dataset is <code>GME-PUNi-202n.xlsx</code>;
-> * For TERNA dataset the generation data is contained in <code>TERNA-gen-202n.xlsx</code> while the load data is in <code>TERNA-load-202n.xlsx </code>  
-> where n goes from 1 to 5 in order to represent the five-year-period
+The repository structure mirrors the analytical workflow.  
+Each notebook is numerically associated with a corresponding section of the README documentation.  
+This modular organization improves reproducibility, readability, and project scalability.
 
-## 3. Data cleaning
+## Data Pipeline
+
+The raw datasets from GME and TERNA are processed through a structured pipeline that transforms heterogeneous time series into a unified analytical dataset.
+
+The final output is an hourly aligned dataset containing:
+- electricity prices (PUN index)
+- electricity demand (load)
+- electricity generation by source
+
+This unified structure enables direct analysis of supply-demand interactions and market price dynamics over time.
+
+## Data Cleaning
+
+The data cleaning phase focuses on resolving inconsistencies across multiple datasets with different temporal resolutions and formats.
+
+Key preprocessing tasks include:
+- standardization of datetime formats
+- resampling of quarter-hourly data to hourly frequency
+- handling of missing or inconsistent observations
+- alignment of datasets across identical time indexes
+
+<!--
+## Exploratory Data Analysis
+The exploratory phase focuses on identifying key patterns in electricity market behavior, including:
+
+- seasonal and intraday price dynamics
+- correlation between demand and price levels
+- impact of renewable generation on price volatility
+- periods of market stress and negative pricing events
+
+
+The analysis aims to uncover structural relationships between supply, demand, and price formation in the Italian electricity market.
+
+## Future Developments
+
+Potential extensions of this project include:
+- incorporation of renewable production forecasts
+- transition to 15-minute Market Time Unit data (post-2025 regulation changes)
+- econometric modeling of price formation
+- application of machine learning models for price forecasting
+- integration of external variables such as gas prices and weather conditions
+-->
