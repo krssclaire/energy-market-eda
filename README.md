@@ -3,11 +3,10 @@
 ## Project Overview and Research Objective
 This project explores the behavior of the Italian electricity market between 2021 and 2025 through a data-driven analysis of energy prices, electricity demand, and generation dynamics.  
 The study combines market price data from GME with generation and load data provided by Italian TSO, TERNA in order to investigate:
+* supply-demand interactions
 * price volatility
 * seasonal and intraday patterns
-* supply-demand interactions
 * renewable generation impact
-* market behavior during periods of energy stress
 
 The project is entirely developed in Python using Jupyter Notebooks.
 
